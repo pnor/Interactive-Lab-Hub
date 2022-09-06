@@ -91,7 +91,8 @@ Try physically acting out the interaction you planned. For now, you can just pre
 \*\***Are there things that seemed better on paper than acted out?**\*\*
 
 \*\***Are there new ideas that occur to you or your collaborators that come up from the acting?**\*\*
-Some of the interactions I had planned out where a bit ill defined
+Some of the interactions I had planned out where a bit vague, and I had to think a bit more on exactly how it'd work.
+One main one was the car light example, where it wasd unclear how the light would know which turn the user wanted to make, and it was unclear how the user would signal that to them.
 
 
 ## Part C. Prototype the device
