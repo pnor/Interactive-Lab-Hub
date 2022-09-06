@@ -75,6 +75,10 @@ Storyboards are a tool for visually exploring a users interaction with a device.
 
 \*\***Include pictures of your storyboards here**\*\*
 
+Storyboards for part 1:
+![first](./storyboard1.JPG_)
+![second](./storyboard2.JPG_)
+
 Present your ideas to the other people in your breakout room (or in small groups). You can just get feedback from one another or you can work together on the other parts of the lab.
 
 \*\***Summarize feedback you got here.**\*\*
@@ -87,6 +91,7 @@ Try physically acting out the interaction you planned. For now, you can just pre
 \*\***Are there things that seemed better on paper than acted out?**\*\*
 
 \*\***Are there new ideas that occur to you or your collaborators that come up from the acting?**\*\*
+Some of the interactions I had planned out where a bit ill defined
 
 
 ## Part C. Prototype the device
@@ -111,6 +116,9 @@ Now, hange the goal within the same setting, and update the interaction with the
 
 \*\***Show the follow-up work here.**\*\*
 
+![First attempt at doing the mug](improvise.mp4)
+I realized the transparent mug I had was too small for my phone, so I decided to put it behind it to simulate the intended effect
+
 
 ## Part E. Costume the device
 
@@ -119,9 +127,14 @@ Only now should you start worrying about what the device should look like. Devel
 Think about the setting of the device: is the environment a place where the device could overheat? Is water a danger? Does it need to have bright colors in an emergency setting?
 
 \*\***Include sketches of what your devices might look like here.**\*\*
+![sketches of the plan](./apparatusplanning.JPG)
 
 \*\***What concerns or opportunitities are influencing the way you've designed the device to look?**\*\*
+- I realized I have a transparent mug, which helps with the modality of light we use in this lab
+- I could easily utilize it to make the effect
 
+Since the phone was too big, ended up doing this:
+![improvised apparatus](./improvise.mp4)
 
 ## Part F. Record
 
@@ -129,6 +142,8 @@ Think about the setting of the device: is the environment a place where the devi
 
 \*\***Please indicate anyone you collaborated with on this Lab.**\*\*
 Be generous in acknowledging their contributions! And also recognizing any other influences (e.g. from YouTube, Github, Twitter) that informed your design. 
+
+![mug](./glowmug1.mp4)
 
 
 
@@ -151,3 +166,11 @@ Do last week’s assignment again, but this time:
 3) We will be grading with an emphasis on creativity. 
 
 \*\***Document everything here. (Particularly, we would like to see the storyboard and video, although photos of the prototype are also great.)**\*\*
+
+Storyboards for part 2:
+![first](./storyboard3.JPG_)
+![second](./storyboard4.JPG_)
+
+Decided to do the 1 based off the lamp that changes its hue as the day proceeds.
+Here is a video of me utilizing my phone backlight with the lampshade on how it'll change throughout the course of the day:
+![lamp](light.mp4)
