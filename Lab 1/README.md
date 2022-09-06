@@ -76,8 +76,8 @@ Storyboards are a tool for visually exploring a users interaction with a device.
 \*\***Include pictures of your storyboards here**\*\*
 
 Storyboards for part 1:
-![first](./storyboard1.JPG_)
-![second](./storyboard2.JPG_)
+![first](./storyboard1.JPG)
+![second](./storyboard2.JPG)
 
 Present your ideas to the other people in your breakout room (or in small groups). You can just get feedback from one another or you can work together on the other parts of the lab.
 
@@ -169,8 +169,8 @@ Do last week’s assignment again, but this time:
 \*\***Document everything here. (Particularly, we would like to see the storyboard and video, although photos of the prototype are also great.)**\*\*
 
 Storyboards for part 2:
-![first](./storyboard3.JPG_)
-![second](./storyboard4.JPG_)
+![first](./storyboard3.JPG)
+![second](./storyboard4.JPG)
 
 Decided to do the 1 based off the lamp that changes its hue as the day proceeds.
 Here is a video of me utilizing my phone backlight with the lampshade on how it'll change throughout the course of the day:
