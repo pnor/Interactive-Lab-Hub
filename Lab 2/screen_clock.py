@@ -66,11 +66,14 @@ while True:
 
     # TODO: Lab 2 part D work should be filled in here. You should be able to look in cli_clock.py and stats.py
     cur_time = time.time()
-    if cur_time % 2 == 0:
+    print(cur_time)
+    if int(cur_time) % 2 == 0:
+        print("a")
         draw.rectangle((0, 0, width, height), outline=0, fill="#FF00FF")
     else:
+        print("b")
         draw.rectangle((0, 0, width, height), outline=0, fill="#00FFFF")
 
     # Display image.
     disp.image(image, rotation)
-    time.sleep(1)
+    time.sleep(0.5)
