@@ -1,7 +1,8 @@
-import time
-import subprocess
-import digitalio
 import board
+import digitalio
+import subprocess
+import time
+import typing
 from PIL import Image, ImageDraw, ImageFont
 import adafruit_rgb_display.st7789 as st7789
 
@@ -60,17 +61,75 @@ backlight = digitalio.DigitalInOut(board.D22)
 backlight.switch_to_output()
 backlight.value = True
 
+# Setup constants and related
+# Buttons
+buttonA = digitalio.DigitalInOut(board.D23)
+buttonB = digitalio.DigitalInOut(board.D24)
+buttonA.switch_to_input()
+buttonB.switch_to_input()
+# Colors
+colorOff = "#000000"
+colorOn = "#00ffff"
+
+
+# ===== Helper Functions for drawing to the screen =====
+Rectangle = tuple[float, float, float, float]
+RectangleColorPair = tuple[rectangle, str]
+
+
+def hour_rectangles(hour: int) -> list[Rectangle]:
+    pass
+
+
+def minute_rectangles(minute: int) -> list[Rectangle]:
+    pass
+
+
+def second_rectangles(second: int) -> list[Rectangle]:
+    pass
+
+
+def calculate_rectangle_color_pairs(
+    startRects: list[Rectangle], endRects: list[Rectangle], progress: float
+) -> RectangleColorPair:
+    """Figure out the lerping from start to end rectangles"""
+    pass
+
+
+def draw_rectangles(rectangleColorPairs: tuple[Rectangle, str]):
+    pass
+
+
+# ===== Helper Functions for working with the time
+HoursMinutesSecondsMicro = [int, int, int, int]
+
+
+def getTimeInPieces() -> HoursMinutesSecondsMicro:
+    pass
+
+
 while True:
     # Draw a black filled box to clear the image.
     draw.rectangle((0, 0, width, height), outline=0, fill=0)
 
-    # TODO: Lab 2 part D work should be filled in here. You should be able to look in cli_clock.py and stats.py
-    cur_time = time.time()
-    if cur_time % 2 == 0:
-        draw.rectangle((0, 0, width, height), outline=0, fill="#FF00FF")
+    # =============
+    # binary clock
+
+    if buttonA.value:
+        colorEven = "#ff00ff"
     else:
-        draw.rectangle((0, 0, width, height), outline=0, fill="#00FFFF")
+        colorEven = "#ff0000"
+
+    cur_time = time.time()
+    print(cur_time)
+    if int(cur_time) % 2 == 0:
+        print("a")
+        draw.rectangle((0, 0, width, height), outline=0, fill=colorEven)
+    else:
+        print("b")
+        draw.rectangle((0, 0, width, height), outline=0, fill=colorOdd)
+        # a change to deploy?
 
     # Display image.
     disp.image(image, rotation)
-    time.sleep(1)
+    time.sleep(0.5)

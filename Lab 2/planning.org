@@ -1,0 +1,14 @@
+#+title: Planning
+
+what to do for the clock?
+
+
+
+* binary clock (with fair effects)
+start counting from when it starts, and show the time as a binary clock
+
+https://www.wikihow.com/Read-a-Binary-Clock
+
+how to interpolate for fade effect?
+
+will try a simple interp pretty the target colors
