@@ -2,6 +2,7 @@ import board
 import digitalio
 import subprocess
 import time
+from datetime import datetime
 import typing
 from PIL import Image, ImageDraw, ImageFont
 import adafruit_rgb_display.st7789 as st7789
@@ -101,11 +102,11 @@ def draw_rectangles(rectangleColorPairs: tuple[Rectangle, str]):
 
 
 # ===== Helper Functions for working with the time
-HoursMinutesSecondsMicro = [int, int, int, int]
+HoursMinutesSecondsMicro = list[int, int, int, int]
 
 
 def getTimeInPieces() -> HoursMinutesSecondsMicro:
-    pass
+    return datetime.now().strftime("%H:%M:%S:%f").split(":")
 
 
 while True:
@@ -115,20 +116,7 @@ while True:
     # =============
     # binary clock
 
-    if buttonA.value:
-        colorEven = "#ff00ff"
-    else:
-        colorEven = "#ff0000"
-
-    cur_time = time.time()
-    print(cur_time)
-    if int(cur_time) % 2 == 0:
-        print("a")
-        draw.rectangle((0, 0, width, height), outline=0, fill=colorEven)
-    else:
-        print("b")
-        draw.rectangle((0, 0, width, height), outline=0, fill=colorOdd)
-        # a change to deploy?
+    print(getTimeInPieces())
 
     # Display image.
     disp.image(image, rotation)
