@@ -155,6 +155,7 @@ def calculate_rectangle_color_pairs(
     startRects: list[Rectangle], endRects: list[Rectangle], progress: float
 ) -> RectangleColorPair:
     """Figure out the lerping from start to end rectangles"""
+    # TODO: lotta work, mainly have to do some color arithmetic and convert it backh
     pass
 
 
