@@ -207,8 +207,21 @@ After that, Git will ask you to login to your GitHub account to push the updates
 
 \*\*\***Take a video of your PiClock.**\*\*\*
 
+Its a binary clock, like this: 
+https://www.wikihow.com/Read-a-Binary-Clock
+It shows the time in squares, representnig bits that represent the hours, minutes and seconds.
+The video is it ticking for a while
+![ticking](./binaryticking.mov)
+
+
 ## Part G. 
 ## Sketch and brainstorm further interactions and features you would like for your clock for Part 2.
+Use the buttons to make ti change color/tick faster or slower?
+
+First thought is the buttons on the PI screen can make it change color, or change how it looks:
+Could also change into a counter when the buttons are pressed and revert when idle for a while.
+
+![storyboard](./ideas.jpg)
 
 
 # Prep for Part 2
@@ -217,6 +230,10 @@ After that, Git will ask you to login to your GitHub account to push the updates
   
 
 2. Look at and give feedback on the Part G. for at least 2 other people in the class (and get 2 people to comment on your Part G!)
+
+**Feedback I got was**
+- I should add labels or something to make the display more clear. This was not something I thought of but was a really good point since it did just look like boxes moving without any explanation
+- Another point of feedback is to maybe make it act more like a clock, like do alarms and such. This is a good idea, but I have to figure out how to actually set a time to alarm at using the limited interface of 2 buttons. (May or may not pursue as might be kind of complicated)
 
 # Lab 2 Part 2
 
