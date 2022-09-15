@@ -168,6 +168,16 @@ def draw_rectangles(rectangle_color_pairs: list[tuple[Rectangle, str]]):
 # ===== Helper Functions for working with the time
 HoursMinutesSecondsMicro = list[int, int, int, int]
 
+# ===== Drawing text labels
+font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 12)
+
+def draw_labels(width: int, height: int):
+    # digit significance
+    for i in range(0, 6):
+        draw.text(((width / 12) + (i * (width / 6)), 5), text=('10' if i % 2 == 0 else '1'), font=font, fill="#ffdd00")
+    # binary values
+    for i in range(0, 4):
+        draw.text((5, height - (height / 8) - (i * (height / 4))), text=str(2**i), font=font, fill="#ffdd00")
 
 def get_time_in_pieces() -> HoursMinutesSecondsMicro:
     time_pieces = datetime.now().strftime("%H:%M:%S:%f").split(":")
@@ -188,6 +198,7 @@ while True:
     rect_pairs = list(map(lambda r: (r, color_on), rects))
 
     draw_rectangles(rect_pairs)
+    draw_labels(width, height)
 
     # print(rectangles_for_number(22))
 
