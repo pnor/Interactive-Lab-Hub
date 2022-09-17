@@ -1,11 +1,13 @@
 import board
+import random
 import digitalio
 import subprocess
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 import typing
 from PIL import Image, ImageDraw, ImageFont
 import adafruit_rgb_display.st7789 as st7789
+from colour import Color
 
 # Configuration for CS and DC pins (these are FeatherWing defaults on M0/M4):
 cs_pin = digitalio.DigitalInOut(board.CE0)
@@ -69,8 +71,11 @@ buttonB = digitalio.DigitalInOut(board.D24)
 buttonA.switch_to_input()
 buttonB.switch_to_input()
 # Colors
-color_off = "#000000"
-color_on = "#00ffff"
+color_off: str = "#000000"
+color_on: str = "#00ffff"
+cur_color: str = "#00ffff"
+target_color: str = "#ff00ff"
+text_color: str = "#ffffff"
 
 
 # ===== Helper Functions for drawing to the screen =====
@@ -152,11 +157,49 @@ def shift_down(rect: Rectangle, amount) -> Rectangle:
 
 
 def calculate_rectangle_color_pairs(
-    startRects: list[Rectangle], endRects: list[Rectangle], progress: float
-) -> RectangleColorPair:
+    start: list[Rectangle], end: list[Rectangle], progress: float
+) -> list[RectangleColorPair]:
     """Figure out the lerping from start to end rectangles"""
     # TODO: lotta work, mainly have to do some color arithmetic and convert it backh
-    pass
+    assert progress >= 0 and progress <= 1
+    both: list[Rectangle | None] = map(
+        lambda r: r if rect_equal_any(r, end) else None, start
+    )
+    both: list[Rectangle] = [b for b in both if b is not None]
+    start = [s for s in start if not rect_equal_any(s, both)]
+    end = [e for e in end if not rect_equal_any(e, both)]
+
+    pairs: list[RectangleColorPair] = []
+    pairs += [(r, color_on) for r in both]
+    pairs += [(r, lerp_colors(color_off, color_on, (1 - progress))) for r in start]
+    pairs += [(r, lerp_colors(color_off, color_on, progress)) for r in end]
+    return pairs
+
+
+def lerp_colors(start: str, end: str, progress: float) -> str:
+    colors = list(Color(start).range_to(Color(end), 100))
+    return colors[int(progress * len(colors))].hex
+
+
+def rect_equal_any(r: Rectangle, others: list[Rectangle]) -> bool:
+    filtered = filter(lambda o: rect_equal(r, o), others)
+    return len(list(filtered)) > 0
+
+
+def rect_equal(a: Rectangle, b: Rectangle) -> bool:
+    aleft, atop, aright, abot = a
+    bleft, btop, bright, bbot = b
+    return (
+        float_equal(aleft, bleft)
+        and float_equal(atop, btop)
+        and float_equal(aright, bright)
+        and float_equal(abot, bbot)
+    )
+
+
+def float_equal(a: float, b: float) -> bool:
+    tolerance = 0.01
+    return abs(a - b) < tolerance
 
 
 def draw_rectangles(rectangle_color_pairs: list[tuple[Rectangle, str]]):
@@ -171,19 +214,41 @@ HoursMinutesSecondsMicro = list[int, int, int, int]
 # ===== Drawing text labels
 font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 12)
 
+
 def draw_labels(width: int, height: int):
     # digit significance
     for i in range(0, 6):
-        draw.text(((width / 12) + (i * (width / 6)), 5), text=('10' if i % 2 == 0 else '1'), font=font, fill="#ffdd00")
+        draw.text(
+            ((width / 12) + (i * (width / 6)), 5),
+            text=("10" if i % 2 == 0 else "1"),
+            font=font,
+            fill=text_color,
+        )
     # binary values
     for i in range(0, 4):
-        draw.text((5, height - (height / 8) - (i * (height / 4))), text=str(2**i), font=font, fill="#ffdd00")
+        draw.text(
+            (5, height - (height / 8) - (i * (height / 4))),
+            text=str(2**i),
+            font=font,
+            fill=text_color,
+        )
 
-def get_time_in_pieces() -> HoursMinutesSecondsMicro:
-    time_pieces = datetime.now().strftime("%H:%M:%S:%f").split(":")
+
+def get_time_in_pieces(offset: int = 0) -> HoursMinutesSecondsMicro:
+    t = datetime.now() + timedelta(seconds=offset)
+    time_pieces = t.strftime("%H:%M:%S:%f").split(":")
     return list(map(lambda s: int(s), time_pieces))
 
 
+def assign_colors_to_rects(
+    now_time: list[Rectangle], next_time: list[Rectangle]
+) -> RectangleColorPair:
+    pass
+
+
+COLOR_DURATION = 2
+color_timer = 0
+DELTA_TIME = 0.017
 while True:
     # Draw a black filled box to clear the image.
     draw.rectangle((0, 0, width, height), outline=0, fill=0)
@@ -194,14 +259,26 @@ while True:
     rects = hour_rectangles(hours)
     rects += minute_rectangles(minutes)
     rects += second_rectangles(secs)
+    next_hours, next_minutes, next_secs, next_micro = get_time_in_pieces(1)
+    next_rects = hour_rectangles(next_hours)
+    next_rects += minute_rectangles(next_minutes)
+    next_rects += second_rectangles(next_secs)
 
-    rect_pairs = list(map(lambda r: (r, color_on), rects))
+    rect_pairs = calculate_rectangle_color_pairs(rects, next_rects, micro / 1000000)
 
     draw_rectangles(rect_pairs)
     draw_labels(width, height)
 
-    # print(rectangles_for_number(22))
+    # Make color change over time
+    color_timer += DELTA_TIME
+    color_on = lerp_colors(
+        cur_color, target_color, min(0.9999, color_timer / COLOR_DURATION)
+    )
+    if color_timer >= COLOR_DURATION:
+        color_timer = 0
+        cur_color = Color(target_color).hex
+        target_color = Color(hue=random.random(), saturation=1, luminance=0.5).hex
 
     # Display image.
     disp.image(image, rotation)
-    time.sleep(0.5)
+    time.sleep(DELTA_TIME)
