@@ -15,3 +15,5 @@ RPi.GPIO==0.7.0
 spidev==3.5
 sysv-ipc==1.1.0
 webcolors==1.11.1
+sparkfun-qwiic-i2c==0.9.11
+sparkfun-qwiic-button==2.0.1

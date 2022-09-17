@@ -3,6 +3,9 @@ import random
 import digitalio
 import subprocess
 import time
+import qwiic_button
+
+
 from datetime import datetime, timedelta
 import typing
 from PIL import Image, ImageDraw, ImageFont
@@ -246,9 +249,20 @@ def assign_colors_to_rects(
     pass
 
 
-COLOR_DURATION = 2
+COLOR_DURATION = 1
 color_timer = 0
 DELTA_TIME = 0.017
+mode: str = "lerp"  # lerp or stable
+
+my_button = qwiic_button.QwiicButton()
+
+if my_button.begin() == False:
+    print(
+        "The Qwiic Joystick device isn't connected to the system. Please check your connection",
+    )
+    exit(1)
+
+
 while True:
     # Draw a black filled box to clear the image.
     draw.rectangle((0, 0, width, height), outline=0, fill=0)
@@ -269,15 +283,28 @@ while True:
     draw_rectangles(rect_pairs)
     draw_labels(width, height)
 
+    # jystick to change mode:
+    if my_button.is_button_pressed():
+        print("mode change")
+        if mode == "lerp":
+            mode = "stable"
+        else:
+            mode = "lerp"
+
+    print(mode)
     # Make color change over time
-    color_timer += DELTA_TIME
-    color_on = lerp_colors(
-        cur_color, target_color, min(0.9999, color_timer / COLOR_DURATION)
-    )
-    if color_timer >= COLOR_DURATION:
-        color_timer = 0
-        cur_color = Color(target_color).hex
-        target_color = Color(hue=random.random(), saturation=1, luminance=0.5).hex
+    if mode == "stable":
+        color_on = "#0000ff"
+    elif mode == "lerp":
+        print(".")
+        color_timer += DELTA_TIME
+        color_on = lerp_colors(
+            cur_color, target_color, min(0.9999, color_timer / COLOR_DURATION)
+        )
+        if color_timer >= COLOR_DURATION:
+            color_timer = 0
+            cur_color = Color(target_color).hex
+            target_color = Color(hue=random.random(), saturation=1, luminance=0.5).hex
 
     # Display image.
     disp.image(image, rotation)
