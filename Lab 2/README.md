@@ -246,3 +246,13 @@ As always, make sure you document contributions and ideas from others explicitly
 You are permitted (but not required) to work in groups and share a turn in; you are expected to make equal contribution on any group work you do, and N people's group project should look like N times the work of a single person's lab. What each person did should be explicitly documented. Make sure the page for the group turn in is linked to your Interactive Lab Hub page. 
 
 
+
+I worked alone on updating the clock with some of the suggestion I got.
+**Notable Changes**
+I added labels to make it a bit easier to understand what boxes correspond to what.
+I made the boxes have more of an animation as they appear, fading in and out rather than blinking.
+
+**Interaction**
+Used the green Qwiic button to let users control how the clock changes color.
+In a 'stable' mode, the squares stay the same color (blue)
+In a 'lerp' mode, as the clock ticks, the color of the boxes change over time, giving it an rgb effect.
