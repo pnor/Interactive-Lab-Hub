@@ -1,8 +1,3 @@
 #!/bin/env bash
 
-echo "Hello" | festival --tts
-flite -voice slt -t "Phillip"
-
-say() { local IFS=+;/usr/bin/mplayer -ao alsa -really-quiet -noconsolecontrols "http://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&q=$*&tl=en"; }
-#say $*
-say "O'Reggio"
+echo "Hello, what's your name?" | festival --tts
