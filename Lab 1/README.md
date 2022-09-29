@@ -169,7 +169,7 @@ Do last week’s assignment again, but this time:
 \*\***Document everything here. (Particularly, we would like to see the storyboard and video, although photos of the prototype are also great.)**\*\*
 
 Storyboards for part 2:
-![first](./storyboard3.JPG)
+![storyboard](./storyboard3.JPG)
 ![second](./storyboard4.JPG)
 
 Decided to do the 1 based off the lamp that changes its hue as the day proceeds.

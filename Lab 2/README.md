@@ -1,4 +1,5 @@
 # Interactive Prototyping: The Clock of Pi
+**NAMES OF COLLABORATORS HERE**
 
 Does it feel like time is moving strangely during this semester?
 
@@ -251,8 +252,11 @@ I worked alone on updating the clock with some of the suggestion I got.
 **Notable Changes**
 I added labels to make it a bit easier to understand what boxes correspond to what.
 I made the boxes have more of an animation as they appear, fading in and out rather than blinking.
+Also updated how the clock visually looks in general, which is described below:
 
 **Interaction**
 Used the green Qwiic button to let users control how the clock changes color.
 In a 'stable' mode, the squares stay the same color (blue)
 In a 'lerp' mode, as the clock ticks, the color of the boxes change over time, giving it an rgb effect.
+
+The file `clockwithbutton.mp4` shows a video of it in action
