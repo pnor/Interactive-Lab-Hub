@@ -113,11 +113,15 @@ The idea for this came from one group's solution to their How Might We at maker 
 
 After the lab we did this past week, I thought that the microphone idea they suggested would be pretty simple to implement using the Pi if we make the level of analysis super simple. I was thinking we have a Microphone that has the Pi in it, and use the existing Vosk engine to detect when they see words like "umm", "uhh", and related. Then, as it picks those up, the microphone can have a light on it that changes color. The speaker will notice this, and then be reminded to not say words like that again.
 
+[Storyboard](./storyboard.JPG)
 ### Acting out the dialogue
 
 Find a partner, and *without sharing the script with your partner* try out the dialogue you've designed, where you (as the device designer) act as the device you are designing.  Please record this interaction (for example, using Zoom's record feature).
 
 \*\***Describe if the dialogue seemed different than what you imagined when it was acted out, and how.**\*\*
+[Video](./wizarding_demo.mp4)
+
+The biggest thing I realized from trying to rehearse the interaction was that the amountof time between the uttrance and the color change matters a lot with how quickly the person would react. I was kind of waiting on my umms to see the change.
 
 ### Wizarding with the Pi (optional)
 In the [demo directory](./demo), you will find an example Wizard of Oz project. In that project, you can see how audio and sensor data is streamed from the Pi to a wizard controller that runs in the browser.  You may use this demo code as a template. By running the `app.py` script, you can see how audio and sensor data (Adafruit MPU-6050 6-DoF Accel and Gyro Sensor) is streamed from the Pi to a wizard controller that runs in the browser `http://<YouPiIPAddress>:5000`. You can control what the system says from the controller as well!
