@@ -109,6 +109,10 @@ Write out what you imagine the dialogue to be. Use cards, post-its, or whatever 
 
 \*\***Please describe and document your process.**\*\*
 
+The idea for this came from one group's solution to their How Might We at maker day. The How Might We was posed by Cornell University on how people can avoid filler words to improve their presentation skills. One of the ideas they suggested was a kind of microphone like device that would analyze your responses and then give suggestions.
+
+After the lab we did this past week, I thought that the microphone idea they suggested would be pretty simple to implement using the Pi if we make the level of analysis super simple. I was thinking we have a Microphone that has the Pi in it, and use the existing Vosk engine to detect when they see words like "umm", "uhh", and related. Then, as it picks those up, the microphone can have a light on it that changes color. The speaker will notice this, and then be reminded to not say words like that again.
+
 ### Acting out the dialogue
 
 Find a partner, and *without sharing the script with your partner* try out the dialogue you've designed, where you (as the device designer) act as the device you are designing.  Please record this interaction (for example, using Zoom's record feature).
