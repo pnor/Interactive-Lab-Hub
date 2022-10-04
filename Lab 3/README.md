@@ -144,6 +144,7 @@ For Part 2, you will redesign the interaction with the speech-enabled device usi
 - Using the screen to give quicker feedback without interrupting the person speaking.
 
 3. Make a new storyboard, diagram and/or script based on these reflections.
+- storyboard is called storyboard2.jpg
 
 Improved ideal interaction with the mic:
 
@@ -159,6 +160,7 @@ The system should:
 *Document how the system works*
 
 *Include videos or screencaptures of both the system and the controller.*
+Videos in interaction1 and interaction2 (.MOV files)
 
 ## Test the system
 Try to get at least two people to interact with your system. (Ideally, you would inform them that there is a wizard _after_ the interaction, but we recognize that can be hard.)
@@ -167,12 +169,14 @@ Answer the following:
 
 ### What worked well about the system and what didn't?
 \*\**your answer here*\*\*
-People reacted to the light pretty quickly, and they would stop talking and listen when the mic itself started speaking. The speaking was good since it would bring much more attention than just visual vues.
+The light overall looked good, and gave the impression of it detecting filler words. I was pretty pleased with how the audio feedback contributed to the overall expierence, as it felt like talking to a person rather than just looking at a light or something similar.
 
 ### What worked well about the controller and what didn't?
 
 \*\**your answer here*\*\*
 I wrote the controller to just say what I typed in and change color when I made it. It was pretty good, since I could quickly adapt it based on the situation, which was good for when I needed to improvise the interaction.
+
+What didn't work well was the delay of the audio I could make. There was about a 2 second pause, which was pretty unnatraul in terms of making it feel like a natraul response or natraul feedback on the presentation
 
 ### What lessons can you take away from the WoZ interactions for designing a more autonomous version of the system?
 
