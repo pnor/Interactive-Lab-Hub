@@ -4,6 +4,7 @@
 from PIL import Image, ImageDraw, ImageFont
 from colour import Color
 from datetime import datetime, timedelta
+from adafruit_rgb_display.rgb import color565
 import adafruit_rgb_display.st7789 as st7789
 import board
 import digitalio
@@ -69,7 +70,11 @@ font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 18)
 # Turn on the backlight
 backlight = digitalio.DigitalInOut(board.D22)
 backlight.switch_to_output()
-backlight.value = True
+backlight.value = False
+buttonA = digitalio.DigitalInOut(board.D23)
+buttonB = digitalio.DigitalInOut(board.D24)
+buttonA.switch_to_input()
+buttonB.switch_to_input()
 # ============================================================
 
 
@@ -77,8 +82,8 @@ def speak(words: str) -> None:
     os.popen(f'echo "{words}" | festival --tts')
 
 
-def light_up(color: str) -> None:
-    draw.rectangle((0, 0, width, height), outline=0, fill=(1, 0, 0))
+def light_up(color: int) -> None:
+    disp.fill(color565(int(255 * color), 0, 0))  # green
 
 
 if __name__ == "__main__":
@@ -87,11 +92,14 @@ if __name__ == "__main__":
     prog = 0
 
     while True:
+        backlight.value = True
         usr_input = input("=> ").strip()
         if usr_input == "l":
             prog += 1
-            light_up(color_range[prog % len(color_range)])
-            print(f"lighting to {color_range[prog % len(color_range)]}")
+            light_up(float(prog) / 10.0)
+            prog = prog % 10
+            print(prog)
+            # print(f"lighting to {color_range[prog % len(color_range)]}")
         elif usr_input == "end" or usr_input == "q":
             break
         elif usr_input == "reset":
