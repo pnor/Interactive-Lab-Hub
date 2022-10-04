@@ -10,7 +10,6 @@ import os
 import qwiic_button
 import random
 import subprocess
-import subprocess
 import sys
 import time
 import time

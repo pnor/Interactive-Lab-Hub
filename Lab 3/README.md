@@ -167,16 +167,21 @@ Answer the following:
 
 ### What worked well about the system and what didn't?
 \*\**your answer here*\*\*
+People reacted to the light pretty quickly, and they would stop talking and listen when the mic itself started speaking. The speaking was good since it would bring much more attention than just visual vues.
 
 ### What worked well about the controller and what didn't?
 
 \*\**your answer here*\*\*
+I wrote the controller to just say what I typed in and change color when I made it. It was pretty good, since I could quickly adapt it based on the situation, which was good for when I needed to improvise the interaction.
 
 ### What lessons can you take away from the WoZ interactions for designing a more autonomous version of the system?
 
 \*\**your answer here*\*\*
+The WoZ was good in that you weren't commited to one type of way with interacting with the device. You could change what the device did based on how the interaction went, which was good for making it work when people did unexpected things.
 
 
 ### How could you use your system to create a dataset of interaction? What other sensing modalities would make sense to capture?
 
 \*\**your answer here*\*\*
+The audio that people say inot the mic would be good to store, to improve analysis of the speech for filler words.
+Sensing modalities to capture might be general body movement, namely in the hand that carries the device. Some people say moving around or flailing too  much when presenting is bad, and this could easily be improved/extended to also detect excessive hand movement.
