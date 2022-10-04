@@ -1,3 +1,4 @@
+
 # Chatterboxes
 **NAMES OF COLLABORATORS HERE**
 [![Watch the video](https://user-images.githubusercontent.com/1128669/135009222-111fe522-e6ba-46ad-b6dc-d1633d21129c.png)](https://www.youtube.com/embed/Q8FWzLMobx0?start=19)
@@ -114,6 +115,7 @@ The idea for this came from one group's solution to their How Might We at maker 
 After the lab we did this past week, I thought that the microphone idea they suggested would be pretty simple to implement using the Pi if we make the level of analysis super simple. I was thinking we have a Microphone that has the Pi in it, and use the existing Vosk engine to detect when they see words like "umm", "uhh", and related. Then, as it picks those up, the microphone can have a light on it that changes color. The speaker will notice this, and then be reminded to not say words like that again.
 
 [Storyboard](./storyboard.JPG)
+
 ### Acting out the dialogue
 
 Find a partner, and *without sharing the script with your partner* try out the dialogue you've designed, where you (as the device designer) act as the device you are designing.  Please record this interaction (for example, using Zoom's record feature).
@@ -135,8 +137,17 @@ For Part 2, you will redesign the interaction with the speech-enabled device usi
 ## Prep for Part 2
 
 1. What are concrete things that could use improvement in the design of your device? For example: wording, timing, anticipation of misunderstandings...
+- Timing : not clear when it starts detecting speech, or when it should start saying feedback. 
+- Signalling : Before, the biggest indicator would just be whether the entire device is on. To fix that, I'd make the screen an easy way to check if its on, and maintain the color based feedback for when you say a filler word. Also, when you are done speaking, it would then give suggestions for how to replace filler words audibly. 
+
 2. What are other modes of interaction _beyond speech_ that you might also use to clarify how to interact?
+- Using the screen to give quicker feedback without interrupting the person speaking.
+
 3. Make a new storyboard, diagram and/or script based on these reflections.
+
+Improved ideal interaction with the mic:
+
+
 
 ## Prototype your system
 
@@ -169,4 +180,3 @@ Answer the following:
 ### How could you use your system to create a dataset of interaction? What other sensing modalities would make sense to capture?
 
 \*\**your answer here*\*\*
-
