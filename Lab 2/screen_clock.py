@@ -69,10 +69,10 @@ backlight.value = True
 
 # Setup constants and related
 # Buttons
-buttonA = digitalio.DigitalInOut(board.D23)
-buttonB = digitalio.DigitalInOut(board.D24)
-buttonA.switch_to_input()
-buttonB.switch_to_input()
+buttona = digitalio.digitalinout(board.d23)
+buttonb = digitalio.digitalinout(board.d24)
+buttona.switch_to_input()
+buttonb.switch_to_input()
 # Colors
 color_off: str = "#000000"
 color_on: str = "#00ffff"

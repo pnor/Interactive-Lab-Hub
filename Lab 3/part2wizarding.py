@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
-from PIL import Image, ImageDraw, ImageFont
 
-# from Typing import *
+from PIL import Image, ImageDraw, ImageFont
+from colour import Color
 from datetime import datetime, timedelta
 import adafruit_rgb_display.st7789 as st7789
 import board
@@ -11,14 +11,11 @@ import os
 import qwiic_button
 import random
 import subprocess
-import subprocess
 import sys
 import time
-import time
 import typing
-from colour import Color
 
-
+# Configuration for CS and DC pins (these are FeatherWing defaults on M0/M4):
 cs_pin = digitalio.DigitalInOut(board.CE0)
 dc_pin = digitalio.DigitalInOut(board.D25)
 reset_pin = None
@@ -41,6 +38,7 @@ disp = st7789.ST7789(
     x_offset=53,
     y_offset=40,
 )
+
 
 # Create blank image for drawing.
 # Make sure to create image with mode 'RGB' for full color.
@@ -94,7 +92,7 @@ if __name__ == "__main__":
             prog += 1
             light_up(color_range[prog % len(color_range)])
             print(f"lighting to {color_range[prog % len(color_range)]}")
-        elif usr_input == "end" or usr_input == 'q':
+        elif usr_input == "end" or usr_input == "q":
             break
         elif usr_input == "reset":
             prog = 0
