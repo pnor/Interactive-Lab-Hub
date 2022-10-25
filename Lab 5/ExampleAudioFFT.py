@@ -18,7 +18,8 @@ UPDATE_INTERVAL = 1.0
 
 ### Things you probably don't need to change
 FORMAT=np.float32
-SAMPLING_RATE = 44100
+# SAMPLING_RATE = 44100
+SAMPLING_RATE = 16000
 CHANNELS=1
 
 
@@ -100,6 +101,9 @@ def main():
                 print("Loudest Frqeuncy:",LoudestFrequency)
                 print("RMS volume:",volumneSlow)
                 print("Volume Change:",volumechange)
+
+                if volumneSlow > 300:
+                    print("high volume!!")
                 
                 nextTimeStamp = UPDATE_INTERVAL+time.time() # See `UPDATE_INTERVAL` above
 
