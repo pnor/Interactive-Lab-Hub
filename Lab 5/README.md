@@ -1,6 +1,6 @@
 # Observant Systems
 
-**NAMES OF COLLABORATORS HERE**
+**Philip Parvaneh, Phillip O’Reggio, Lineker Ono-Lozano**
 
 
 For lab this week, we focus on creating interactive systems that can detect and respond to events or stimuli in the environment of the Pi, like the Boat Detector we mentioned in lecture. 
@@ -102,6 +102,53 @@ pi@ixe00:~/openCV-examples/object-detection $ python detect.py
 
 **\*\*\*Try each of the following four examples in the `openCV-examples`, include screenshots of your use and write about one design for each example that might work based on the individual benefits to each algorithm.\*\*\***
 
+
+Contours-Detection
+
+
+For the contour-detection example, one design use-case we saw fit would be an automatic vacuum (similar to a roomba). This algorithm would benefit this design the most for it would be able to detect the borders of different types of objects and be able to navigate around the object without interfering with it. 
+
+
+
+
+
+
+
+
+
+
+
+
+Face-Detection
+
+
+For the facial recognition example, one design we believe is a benefit of this algorithm is a mask recognition application. This idea will identify if people entering a room have a mask on their face or if the mask is not on like seen above. The user would be notified if they can enter with their mask securely on or will notify the user to put a mask on before entering the room.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Optical Flow
+
+For optical flow, this could be used to collect data on the flow of people or traffic. One thing I can think of is if we mounted the camera looking between the intersection of the house, Tata and Bloomberg, it could give a visualization of seeing what classes are beginning and ending judging from how people move between the buildings.
+
+
+For the object detection one, we could make a type of sorting robot. It would identify the sizes of different objects in the room, and use that to move things so that they are arranged in order of size, or however the user specifies.
+
 #### Filtering, FFTs, and Time Series data. 
 Additional filtering and analysis can be done on the sensors that were provided in the kit. For example, running a Fast Fourier Transform over the IMU or Microphone data stream could create a simple activity classifier between walking, running, and standing.
 
@@ -126,6 +173,7 @@ Now try the audio processing example:
 Using the microphone, try one of the following:
 
 **1. Set up threshold detection** Can you identify when a signal goes above certain fixed values?
+Yes using code listed below, was able to see in output when signal went over the threshold
 
 **2. Set up a running averaging** Can you set up a running average over one of the variables that are being calculated.[moving average](https://en.wikipedia.org/wiki/Moving_average)
 
@@ -139,6 +187,15 @@ For technical references:
 
 
 **\*\*\*Include links to your code here, and put the code for these in your repo--they will come in handy later.\*\*\***
+Added a simple if statement to check the thresholds on volume. 
+```
+                print("Loudest Frqeuncy:",LoudestFrequency)
+                print("RMS volume:",volumneSlow)
+                print("Volume Change:",volumechange)
+
+                if volumneSlow > 300:
+                    print("high volume!!") # here
+```
 
 ### (Optional Reading) Introducing Additional Concepts
 The following sections ([MediaPipe](#mediapipe) and [Teachable Machines](#teachable-machines)) are included for your own optional learning. **The associated scripts will not work on Fall 2022's Pi Image, so you can move onto part B.** However, you are welcome to try it on your personal computer. If this functionality is desirable for your lab or final project, we can help you get a different image running the last OS and version of python to make the following code work.
@@ -177,7 +234,7 @@ Each of the installs will take a while, please be patient. After successfully in
 
 Try the two main features of this script: 1) pinching for percentage control, and 2) "[Quiet Coyote](https://www.youtube.com/watch?v=qsKlNVpY7zg)" for instant percentage setting. Notice how this example uses hardcoded positions and relates those positions with a desired set of events, in `hand_pose.py` lines 48-53. 
 
-~~\*\*\*Consider how you might use this position based approach to create an interaction, and write how you might use it on either face, hand or body pose tracking.\*\*\*~~
+~\*\*\*Consider how you might use this position based approach to create an interaction, and write how you might use it on either face, hand or body pose tracking.\*\*\*~~
 
 (You might also consider how this notion of percentage control with hand tracking might be used in some of the physical UI you may have experimented with in the last lab, for instance in controlling a servo or rotary encoder.)
 
@@ -213,7 +270,7 @@ This might take a while to get fully installed. After installation, connect your
 
 (**Optionally**: You can train your own model, too. First, visit [TeachableMachines](https://teachablemachine.withgoogle.com/train), select Image Project and Standard model. Second, use the webcam on your computer to train a model. For each class try to have over 50 samples, and consider adding a background class where you have nothing in view so the model is trained to know that this is the background. Then create classes based on what you want the model to classify. Lastly, preview and iterate, or export your model as a 'Tensorflow' model, and select 'Keras'. You will find an '.h5' file and a 'labels.txt' file. These are included in this labs 'teachable_machines' folder, to make the PPE model you used earlier. You can make your own folder or replace these to make your own classifier.)
 
-~~**\*\*\*Whether you make your own model or not, include screenshots of your use of Teachable Machines, and write how you might use this to create your own classifier. Include what different affordances this method brings, compared to the OpenCV or MediaPipe options.\*\*\***~~
+~**\*\*\*Whether you make your own model or not, include screenshots of your use of Teachable Machines, and write how you might use this to create your own classifier. Include what different affordances this method brings, compared to the OpenCV or MediaPipe options.\*\*\***~~
 
 
 *Don't forget to run ```deactivate``` to end the Teachable Machines demo, and to reactivate with ```source tmachine/bin/activate``` when you want to use it again.*
@@ -223,11 +280,18 @@ This might take a while to get fully installed. After installation, connect your
 ### Construct a simple interaction.
 
 * Pick one of the models you have tried, and experiment with prototyping an interaction.
-* This can be as simple as the boat detector showen in a previous lecture from Nikolas Matelaro.
+
+Facial Recognition tracking
+
+* This can be as simple as the boat detector shown in a previous lecture from Nikolas Matelaro.
+
 * Try out different interaction outputs and inputs.
 * Fill out the ``Contextual Interaction Design Tool`` sheet.[Found here.](ThinkingThroughContextandInteraction.png)
 
 **\*\*\*Describe and detail the interaction, as well as your experimentation here.\*\*\***
+
+The interaction we have decided to go further with was the mask detector application. This interaction would go as a user would walk up to a camera before entering a room or area, such as a classroom or airplane, and the sensor would detect if the user is wearing a proper face mask or if they did not have one on. If the latter, the user would be prompted to put on a mask before entering the room. 
+
 
 ### Part C
 ### Test the interaction prototype
@@ -235,15 +299,41 @@ This might take a while to get fully installed. After installation, connect your
 Now flight test your interactive prototype and **note down your observations**:
 For example:
 1. When does it what it is supposed to do?
+When the user is not wearing a mask, it will say “NO MASK” and the user will know they need to put on a mask. 
+When a user is wearing a mask, it will say “MASK ON, PROCEED”, and the user can enter the area
+
 1. When does it fail?
+Application fails when it can detect a face at all.
+
 1. When it fails, why does it fail?
+Can fail to detect faces due to poor lighting.
+Application can fail if object or camera is in motion
+Application can not differentiate between people of color.
+Applications will only identify people of color without a mask or glasses.
+
+
 1. Based on the behavior you have seen, what other scenarios could cause problems?
 
 **\*\*\*Think about someone using the system. Describe how you think this will work.\*\*\***
 1. Are they aware of the uncertainties in the system?
+
+Likely not initially, as they wouldn’t 
+Do they have a very thick beard where a mask would usually be placed?
+Do they have the mask partially on?
+Are they wearing a mask with a face on it?
+
 1. How bad would they be impacted by a miss classification?
+
+Not so bad, there would be a human monitor.
+
 1. How could change your interactive system to address this?
+
+Take different angles of pictures, adding to our sample for ml model.
+
 1. Are there optimizations you can try to do on your sense-making algorithm.
+
+Take different angles of pictures, adding to our sample for ml model.
+
 
 ### Part D
 ### Characterize your own Observant system
@@ -265,3 +355,4 @@ During the lecture, we mentioned questions to help characterize a material:
 Following exploration and reflection from Part 1, finish building your interactive system, and demonstrate it in use with a video.
 
 **\*\*\*Include a short video demonstrating the finished result.\*\*\***
+
