@@ -16,13 +16,13 @@ This lab will help you think through the design of observant systems, particular
 4.  Read Belloti, et al.'s [Making Sense of Sensing Systems: Five Questions for Designers and Researchers](https://www.cc.gatech.edu/~keith/pubs/chi2002-sensing.pdf).
 
 ### For the lab, you will need:
-1. Pull the new Github Repo.(Please wait until thursday morning. There are still some incompatabilities to make the assignment work.)
+1. Pull the new Github Repo.(Please wait until Thursday morning. There are still some incompatibilities to make the assignment work.)
 1. Raspberry Pi
 1. Webcam 
 
 ### Deliverables for this lab are:
 1. Show pictures, videos of the "sense-making" algorithms you tried.
-1. Show the filledout answers for the Contextual Interaction Design Tool.
+1. Show the filled out answers for the Contextual Interaction Design Tool.
 1. Show a video of how you embed one of these algorithms into your observant system.
 1. Test, characterize your interactive device. Show faults in the detection and how the system handled it.
 
@@ -110,11 +110,7 @@ For the contour-detection example, one design use-case we saw fit would be an au
 
 
 
-
-
-
-
-
+<img width="1043" alt="Screen Shot 2022-10-24 at 8 09 10 PM" src="https://user-images.githubusercontent.com/111994216/197673042-c3665b69-8a64-4432-928d-2bd6f9e17884.png">
 
 
 
@@ -125,19 +121,7 @@ Face-Detection
 For the facial recognition example, one design we believe is a benefit of this algorithm is a mask recognition application. This idea will identify if people entering a room have a mask on their face or if the mask is not on like seen above. The user would be notified if they can enter with their mask securely on or will notify the user to put a mask on before entering the room.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+<img width="1079" alt="Screen Shot 2022-10-24 at 8 13 41 PM" src="https://user-images.githubusercontent.com/111994216/197673063-c32e5875-b77f-4bdc-8ca8-eb1214823056.png">
 
 
 
@@ -145,6 +129,13 @@ For the facial recognition example, one design we believe is a benefit of this a
 Optical Flow
 
 For optical flow, this could be used to collect data on the flow of people or traffic. One thing I can think of is if we mounted the camera looking between the intersection of the house, Tata and Bloomberg, it could give a visualization of seeing what classes are beginning and ending judging from how people move between the buildings.
+
+<img width="779" alt="Screen Shot 2022-10-24 at 11 05 40 PM" src="https://user-images.githubusercontent.com/111994216/197673155-dc25b8c6-9336-4751-bd6f-ac63c0e3c0e4.png">
+
+
+Object-Detection
+
+<img width="775" alt="Screen Shot 2022-10-24 at 11 05 32 PM" src="https://user-images.githubusercontent.com/111994216/197673370-9a44d52f-89e4-4c92-87b6-8a1a452bd4ec.png">
 
 
 For the object detection one, we could make a type of sorting robot. It would identify the sizes of different objects in the room, and use that to move things so that they are arranged in order of size, or however the user specifies.
@@ -234,7 +225,7 @@ Each of the installs will take a while, please be patient. After successfully in
 
 Try the two main features of this script: 1) pinching for percentage control, and 2) "[Quiet Coyote](https://www.youtube.com/watch?v=qsKlNVpY7zg)" for instant percentage setting. Notice how this example uses hardcoded positions and relates those positions with a desired set of events, in `hand_pose.py` lines 48-53. 
 
-~\*\*\*Consider how you might use this position based approach to create an interaction, and write how you might use it on either face, hand or body pose tracking.\*\*\*~~
+~~\*\*\*Consider how you might use this position based approach to create an interaction, and write how you might use it on either face, hand or body pose tracking.\*\*\*~~
 
 (You might also consider how this notion of percentage control with hand tracking might be used in some of the physical UI you may have experimented with in the last lab, for instance in controlling a servo or rotary encoder.)
 
@@ -270,7 +261,7 @@ This might take a while to get fully installed. After installation, connect your
 
 (**Optionally**: You can train your own model, too. First, visit [TeachableMachines](https://teachablemachine.withgoogle.com/train), select Image Project and Standard model. Second, use the webcam on your computer to train a model. For each class try to have over 50 samples, and consider adding a background class where you have nothing in view so the model is trained to know that this is the background. Then create classes based on what you want the model to classify. Lastly, preview and iterate, or export your model as a 'Tensorflow' model, and select 'Keras'. You will find an '.h5' file and a 'labels.txt' file. These are included in this labs 'teachable_machines' folder, to make the PPE model you used earlier. You can make your own folder or replace these to make your own classifier.)
 
-~**\*\*\*Whether you make your own model or not, include screenshots of your use of Teachable Machines, and write how you might use this to create your own classifier. Include what different affordances this method brings, compared to the OpenCV or MediaPipe options.\*\*\***~~
+~~**\*\*\*Whether you make your own model or not, include screenshots of your use of Teachable Machines, and write how you might use this to create your own classifier. Include what different affordances this method brings, compared to the OpenCV or MediaPipe options.\*\*\***~~
 
 
 *Don't forget to run ```deactivate``` to end the Teachable Machines demo, and to reactivate with ```source tmachine/bin/activate``` when you want to use it again.*
@@ -292,6 +283,8 @@ Facial Recognition tracking
 
 The interaction we have decided to go further with was the mask detector application. This interaction would go as a user would walk up to a camera before entering a room or area, such as a classroom or airplane, and the sensor would detect if the user is wearing a proper face mask or if they did not have one on. If the latter, the user would be prompted to put on a mask before entering the room. 
 
+<img width="775" alt="Mask detecting robot" src="https://media.timeout.com/images/105659495/image.jpg">
+
 
 ### Part C
 ### Test the interaction prototype
@@ -303,50 +296,73 @@ When the user is not wearing a mask, it will say “NO MASK” and the user will
 When a user is wearing a mask, it will say “MASK ON, PROCEED”, and the user can enter the area
 
 1. When does it fail?
-Application fails when it can detect a face at all.
+Application fails when it can’t detect a face at all.
+Application fails when it detects a face correctly but does not identify a mask correctly.
 
 1. When it fails, why does it fail?
 Can fail to detect faces due to poor lighting.
 Application can fail if object or camera is in motion
 Application can not differentiate between people of color.
 Applications will only identify people of color without a mask or glasses.
-
+Application has problems identifying objects that aren’t masks on someones face.
 
 1. Based on the behavior you have seen, what other scenarios could cause problems?
-
-**\*\*\*Think about someone using the system. Describe how you think this will work.\*\*\***
-1. Are they aware of the uncertainties in the system?
-
-Likely not initially, as they wouldn’t 
+Scenarios that have a combination of these will likely cause problems, so perhaps somewhat bad lighting with someone with glasses would probably cause a problem.
 Do they have a very thick beard where a mask would usually be placed?
 Do they have the mask partially on?
 Are they wearing a mask with a face on it?
 
+**\*\*\*Think about someone using the system. Describe how you think this will work.\*\*\***
+1. Are they aware of the uncertainties in the system?
+There are some systems that use facial recognition (such as Apple FaceID) and people would likely be familiar with those systems. 
+So they will likely try small changes in order to make the system work (adjusting lighting, moving slowly, removing glasses, etc).
+
 1. How bad would they be impacted by a miss classification?
 
-Not so bad, there would be a human monitor.
+Ideally there is human verification to help reinforce the results. So in most situations not so bad, as there would be a human monitor.
+In situations where there is no monitor there would be bad reprecussions in the potential exposure of others.
+Likely the worst if a company is using this, then it enters potential legal repercussions.
 
 1. How could change your interactive system to address this?
 
 Take different angles of pictures, adding to our sample for ml model.
+Have a light built into the system that takes different pictures with varying light levels.
+Asking the user to speak to see if an open mouth can be detected.
 
 1. Are there optimizations you can try to do on your sense-making algorithm.
 
-Take different angles of pictures, adding to our sample for ml model.
+The algorithm could take advantage of more than just 1 photo for trying to get better and more accurate results. It could take pictures from multiple angles to get better results. It could utilize changes in lighting to enhance the quality of the photo. We could do this by adding a flash, or using different types of flashes. Also the device could ask the person to respond to a question, requiring them to open their mouth, which could help. We could also screen people where the algorithm did not give a conclusive answer, like “uncertain”.
 
 
 ### Part D
 ### Characterize your own Observant system
 
-Now that you have experimented with one or more of these sense-making systems **characterize their behavior**.
-During the lecture, we mentioned questions to help characterize a material:
+Now that you have experimented with one or more of these sense-making systems **characterize their behavior**. During the lecture, we mentioned questions to help characterize a material:
 * What can you use X for?
+X can be used to screen people if they are wearing a mask or not. It could provide a means to quickly process people and screen people with no masks or where the system has uncertainty.
+Examples would be students entering schools, people entering events, people taking flights, people checking into a hotel at after hours, etc.
+
 * What is a good environment for X?
+In a well lit environment, and somewhere where the pi’s camera has a good, clear view of the person it is working with. Also the person does not have glasses or anything else that slightly blocks the users face.
+
 * What is a bad environment for X?
+A bad environment is a poorly lit environment, since pictures taken by the pi will not be able to really see the person it is trying to work with. Also if the pi is mounted in a bad position such that it gets only bad angles of the person. This would hinder its ability to determine if the person is wearing a mask.
+
 * When will X break?
+
+It breaks if the camera gets broken or obstructed. Since the majority of the functionality is reliant on the feed from the camera, if the camera gets hit or knocked off, this directly will affect the data the system uses to classify. Also if the camera just moves, this could have a large effect on the input data. Also if the camera is in motion or there is bad lighting, this negatively affects the output.
+
 * When it breaks how will X break?
+It will break if lighting is poor in the room or the user is in motion, it will incorrectly assume if a user has a mask on or off. The application will say put on a mask to the user even if user is already wearing a mask and vice versa. 
+
+
 * What are other properties/behaviors of X?
+
+Unfortunately X has a bias towards people of color and cannot as easily identify their faces. In our tests, people of color needed to have a very clear image (good lighting) without any face obstructions (such as glasses). 
+We were unable to test with someone having a full beard, but we imagine it might have issues identifying them properly.
+
 * How does X feel?
+X feels a bit ineffective compared to a humans’ ability to quickly identify those wearing masks, but in a setting where human workforce is not available it provides a useful solution. X also feels ineffective due to its bias against people of color.
 
 **\*\*\*Include a short video demonstrating the answers to these questions.\*\*\***
 
@@ -355,4 +371,8 @@ During the lecture, we mentioned questions to help characterize a material:
 Following exploration and reflection from Part 1, finish building your interactive system, and demonstrate it in use with a video.
 
 **\*\*\*Include a short video demonstrating the finished result.\*\*\***
+
+
+
+https://user-images.githubusercontent.com/111994216/197673931-b60acc04-5812-4046-b693-843c1f77e843.mov
 
