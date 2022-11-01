@@ -372,7 +372,7 @@ Following exploration and reflection from Part 1, finish building your interacti
 
 **\*\*\*Include a short video demonstrating the finished result.\*\*\***
 
-
+https://user-images.githubusercontent.com/111994216/197673931-b60acc04-5812-4046-b693-843c1f77e843.mov
 
 https://drive.google.com/file/d/1kKEnvRjHqsohLfm23iY0XW46a_lY_RmA/view
 
