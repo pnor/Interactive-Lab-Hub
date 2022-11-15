@@ -1,6 +1,6 @@
 Phillip O’Reggio (pno3), Mohammad Asfour (mya26), Rahul Sahetiya (rs2248)
 
-![input settings](Final/draftdrawing.png)
+![input settings](draftdrawing.png)
 
 # Big Idea
 Essentially creating a trash enclosure with multiple bins. Each bins will be designated to collect a different material (i.e. compost, plastics, general waste)
