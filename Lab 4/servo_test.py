@@ -16,11 +16,13 @@ while True:
     try:
         # Set the servo to 180 degree position
         servo.angle = 180
+        print("angle to 180")
         time.sleep(2)
         # Set the servo to 0 degree position
         servo.angle = 0
+        print("angle to 0")
         time.sleep(2)
-        
+
     except KeyboardInterrupt:
         # Once interrupted, set the servo back to 0 degree position
         servo.angle = 0
