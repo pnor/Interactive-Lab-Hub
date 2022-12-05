@@ -68,24 +68,26 @@ backlight.value = True
 
 # ===== End of Graphics stuff ====================
 
-topic = 'IDD/teacher_student'
+topic = "IDD/teacher_student"
 
 # some other examples
 # topic = 'IDD/a/fun/topic'
+
 
 def say_stars_on_screen(name: str, num_stars: int):
     # Draw a black filled box to clear the image.
     draw.rectangle((0, 0, width, height), outline=0, fill=0)
     msg1 = name
-    msg2 = str(num_stars) + '/ 5'
+    msg2 = str(num_stars) + "/ 5"
     y = top
     draw.text((x, y), msg1, font=font, fill="#FFFFFF")
     y += font.getsize(msg1)[1]
     draw.text((x, y), msg2, font=font, fill="#FFFFFF")
     disp.image(image, rotation)
 
-#this is the callback that gets called once we connect to the broker.
-#we should add our subscribe functions here as well
+
+# this is the callback that gets called once we connect to the broker.
+# we should add our subscribe functions here as well
 def on_connect(client, userdata, flags, rc):
     print(f"connected with result code {rc}")
     client.subscribe(topic)
@@ -98,9 +100,9 @@ def on_message(client, userdata, msg):
     # print(f"topic: {msg.topic} msg: {msg.payload.decode('UTF-8')}")
     if msg.topic == topic:
         try:
-            response = json.loads(msg.payload.decode('UTF-8'))
+            response = json.loads(msg.payload.decode("UTF-8"))
             print(response)
-            say_stars_on_screen(response['name'], response['stars'])
+            say_stars_on_screen(response["name"], response["stars"])
         except e:
             print(f"couldn't parse the response")
 
@@ -113,18 +115,15 @@ client = mqtt.Client(str(uuid.uuid1()))
 # configure network encryption etc
 client.tls_set()
 # this is the username and pw we have setup for the class
-client.username_pw_set('idd', 'device@theFarm')
+client.username_pw_set("idd", "device@theFarm")
 
 # attach out callbacks to the client
 client.on_connect = on_connect
 client.on_message = on_message
 
-#connect to the broker
-client.connect(
-    'farlab.infosci.cornell.edu',
-    port=8883)
+# connect to the broker
+client.connect("farlab.infosci.cornell.edu", port=8883)
 
 # this is blocking. to see other ways of dealing with the loop
 #  https://www.eclipse.org/paho/index.php?page=clients/python/docs/index.php#network-loop
 client.loop_forever()
-
