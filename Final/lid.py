@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import time
 from adafruit_servokit import ServoKit
 
@@ -12,21 +14,21 @@ print(servo)
 # Set the pulse width range of your servo for PWM control of rotating 0-180 degree (min_pulse, max_pulse)
 # Each servo might be different, you can normally find this information in the servo datasheet
 servo.set_pulse_width_range(500, 2500)
-# servo.set_pulse_width_range(500, 2000)
+
+
+def open_lid():
+    servo.angle = 120
+
+
+def close_lid():
+    servo.angle = 0
+
 
 while True:
-    try:
-        # Set the servo to 180 degree position
-        servo.angle = 180
-        print("angle to 180")
-        time.sleep(2)
-        # Set the servo to 0 degree position
-        servo.angle = 0
-        print("angle to 0")
-        time.sleep(2)
-
-    except KeyboardInterrupt:
-        # Once interrupted, set the servo back to 0 degree position
-        servo.angle = 0
-        time.sleep(0.5)
-        break
+    cmd = input("> ")
+    if cmd == "o":
+        open_lid()
+    elif cmd == "c":
+        close_lid()
+    else:
+        exit(0)
